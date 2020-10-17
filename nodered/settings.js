@@ -23,7 +23,7 @@ module.exports = {
 
     // To enabled pretty-printing of the flow within the flow file, set the following
     //  property to true:
-    //flowFilePretty: true,
+    flowFilePretty: true,
 
     // By default, credentials are encrypted in storage using a generated key. To
     // specify your own secret, set the following property.
@@ -31,10 +31,10 @@ module.exports = {
     // Note: once you set this property, do not change it - doing so will prevent
     // node-red from being able to decrypt your existing credentials and they will be
     // lost.
-    //credentialSecret: "a-secret-key",
+    credentialSecret: process.env.SECRETKEY,
 
     // If not specified, data will be put in '$HOME/.node-red'
-    userDir: `${process.cwd()}/data`,
+    userDir: `${process.cwd()}/flows`,
     
     // Node-RED scans the `nodes` directory in the install directory to find nodes.
     // The following property can be used to specify an additional directory to scan.
@@ -82,9 +82,9 @@ module.exports = {
     adminAuth: {
         type: "credentials",
         users: [{
-            username: "admin",
-            password: "$2b$08$a3BqIzZBlX1ZZGymCPCeV.JNy0nEmyOIRdiN.hDjxXaHMzPk1Z/uO",
-            permissions: "*"
+            username: process.env.USERNAME,
+            password: process.env.PASSWORD,
+           permissions: "*"
         }],
     //  Only allow read access without authentication
         default: {
@@ -117,7 +117,7 @@ module.exports = {
     // The following property can be used to disable the editor. The admin API
     // is not affected by this option. To disable both the editor and the admin
     // API, use either the httpRoot or httpAdminRoot properties
-    //disableEditor: false,
+    disableEditor: (process.env.DISABLE_NODERED_EDITOR == 'true') || false,
 
     // The following property can be used to configure cross-origin resource sharing
     // in the HTTP nodes.
@@ -155,7 +155,8 @@ module.exports = {
 
     functionGlobalContext: {
         process: process,
-        os: require('os')
+        os: require('os'),
+        dotenv: require('dotenv')
     },
 
     // Context Storage
@@ -177,16 +178,16 @@ module.exports = {
     // If not set, the following default order is used:
     //paletteCategories: ['subflows', 'input', 'output', 'function', 'social', 'mobile', 'storage', 'analysis', 'advanced'],
     editorTheme: {
-        /*page: {
-            title: "Node-RED",
-            favicon: "assets/favicon.ico"
-        },*/
+        page: {
+            title: `Hands on IoT Programming - ${process.env.FLOW}`,
+            favicon: "/usr/src/app/assets/favicon.ico"
+        },
         header: {
             title: `Hands on IoT Programming - ${process.env.FLOW}`,
-        //    image: "assets/logo.png", // or null to remove image
+            image: "assets/logo.png", // or null to remove image
             url: "https://github.com/Hands-on-IoT-Programming"
         },
-        /*deployButton: {
+        deployButton: {
             type: "simple",
             label: "Deploy",
             icon: "assets/favicon.ico"
@@ -196,7 +197,7 @@ module.exports = {
         },
         logout: {
             redirect: "http://therobotacademy.com"
-        },*/
+        },
         projects: {
             enabled: false // Enable the projects feature https://nodered.org/docs/user-guide/projects/
         } 
