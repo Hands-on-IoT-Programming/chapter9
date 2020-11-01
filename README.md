@@ -8,7 +8,7 @@ How to start the application:
 $ cd ./nodered
 $ bash start.sh
 ```
-Alternatively you can make use of the easy startup using the command defined in `Makefile`:
+Alternatively you can make use of the easy startup using the command defined in `Makefile` ` in folder `./nodered`:
 >`$ make nodered`
 
 ## InfluxDB UI
@@ -19,3 +19,5 @@ $ npm install
 $ npm run build
 $ npm start
 ```
+Alternatively you can make use of the easy startup using the command defined in `Makefile` in folder `./influxdb-ui`:
+>`$ make influxdb`

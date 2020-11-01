@@ -10,3 +10,6 @@ publish: docker
 	docker tag influxdb-ui:$(BUILDVERSION) sillydong/influxdb-ui:latest
 	docker push sillydong/influxdb-ui:$(BUILDVERSION)
 	docker push sillydong/influxdb-ui:latest
+
+influxdb:
+	npm start
