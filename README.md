@@ -8,6 +8,8 @@ How to start the application:
 $ cd ./nodered
 $ bash start.sh
 ```
+Alternatively you can make use of the easy startup using the command defined in `Makefile`:
+>`$ make nodered`
 
 ## InfluxDB UI
 Web interface for accessing the InfluxDB database
