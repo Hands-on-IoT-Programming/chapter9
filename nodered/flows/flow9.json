@@ -1529,123 +1529,6 @@
         ]
     },
     {
-        "id": "ae93d4ee.dd9938",
-        "type": "influxdb in",
-        "z": "c77ab3af.0f028",
-        "influxdb": "ccc0b64f.610828",
-        "name": "Temperature SELECT query",
-        "query": "SELECT * FROM temperatures",
-        "rawOutput": false,
-        "precision": "",
-        "retentionPolicy": "",
-        "x": 800,
-        "y": 80,
-        "wires": [
-            [
-                "eb1edf63.af0d"
-            ]
-        ]
-    },
-    {
-        "id": "f440332c.3280e",
-        "type": "inject",
-        "z": "c77ab3af.0f028",
-        "name": "",
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "x": 580,
-        "y": 80,
-        "wires": [
-            [
-                "ae93d4ee.dd9938"
-            ]
-        ]
-    },
-    {
-        "id": "eb1edf63.af0d",
-        "type": "debug",
-        "z": "c77ab3af.0f028",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "x": 1050,
-        "y": 80,
-        "wires": []
-    },
-    {
-        "id": "601de009.89e4f",
-        "type": "inject",
-        "z": "c77ab3af.0f028",
-        "name": "",
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "x": 580,
-        "y": 160,
-        "wires": [
-            [
-                "a98b2eea.ffd2e"
-            ]
-        ]
-    },
-    {
-        "id": "a98b2eea.ffd2e",
-        "type": "function",
-        "z": "c77ab3af.0f028",
-        "name": "simple SELECT query",
-        "func": "msg.query=\"select * from temperatures;\";\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 770,
-        "y": 160,
-        "wires": [
-            [
-                "792e2161.f7e8a"
-            ]
-        ]
-    },
-    {
-        "id": "792e2161.f7e8a",
-        "type": "influxdb in",
-        "z": "c77ab3af.0f028",
-        "influxdb": "ccc0b64f.610828",
-        "name": "Temperature SELECT query II",
-        "query": "",
-        "rawOutput": false,
-        "precision": "",
-        "retentionPolicy": "",
-        "x": 1030,
-        "y": 160,
-        "wires": [
-            [
-                "f44bb649.e95758"
-            ]
-        ]
-    },
-    {
-        "id": "f44bb649.e95758",
-        "type": "debug",
-        "z": "c77ab3af.0f028",
-        "name": "",
-        "active": true,
-        "console": "false",
-        "complete": "false",
-        "x": 1270,
-        "y": 160,
-        "wires": []
-    },
-    {
         "id": "97244d9d.2e163",
         "type": "comment",
         "z": "c77ab3af.0f028",
@@ -2016,6 +1899,177 @@
         "wires": [
             [
                 "32538607.10b53a"
+            ]
+        ]
+    },
+    {
+        "id": "bd3780ea.bd31e",
+        "type": "influxdb in",
+        "z": "c77ab3af.0f028",
+        "influxdb": "ccc0b64f.610828",
+        "name": "'temperatures' SELECT query",
+        "query": "SELECT * FROM temperatures",
+        "rawOutput": false,
+        "precision": "",
+        "retentionPolicy": "",
+        "x": 790,
+        "y": 80,
+        "wires": [
+            [
+                "8548c112.bb79d"
+            ]
+        ]
+    },
+    {
+        "id": "b15f26ac.83ee48",
+        "type": "inject",
+        "z": "c77ab3af.0f028",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 560,
+        "y": 80,
+        "wires": [
+            [
+                "bd3780ea.bd31e",
+                "29c6ed06.d740d2"
+            ]
+        ]
+    },
+    {
+        "id": "8548c112.bb79d",
+        "type": "debug",
+        "z": "c77ab3af.0f028",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 1030,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "8cc58772.183038",
+        "type": "inject",
+        "z": "c77ab3af.0f028",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 560,
+        "y": 160,
+        "wires": [
+            [
+                "2795485d.088068"
+            ]
+        ]
+    },
+    {
+        "id": "2795485d.088068",
+        "type": "function",
+        "z": "c77ab3af.0f028",
+        "name": "SELECT points in the last 60s",
+        "func": "//msg.query=\"SELECT * FROM temperatures\";\n//msg.query=\"SELECT last(temperature),time,location,room FROM sense_hat\";\n//msg.query=\"SELECT * FROM sense_hat WHERE time > now() - 1h limit 4\";\n//msg.query=\"SELECT * FROM sense_hat WHERE time > now() - 1m\";\nmsg.query=\"SELECT * FROM sense_hat WHERE time > now() - 60s\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 770,
+        "y": 160,
+        "wires": [
+            [
+                "be7a2b6.2106ed8"
+            ]
+        ]
+    },
+    {
+        "id": "be7a2b6.2106ed8",
+        "type": "influxdb in",
+        "z": "c77ab3af.0f028",
+        "influxdb": "ccc0b64f.610828",
+        "name": "'sense_hat' SELECT query II",
+        "query": "",
+        "rawOutput": false,
+        "precision": "",
+        "retentionPolicy": "",
+        "x": 1060,
+        "y": 160,
+        "wires": [
+            [
+                "78b3735a.16ad1c",
+                "d27548ea.d851d8"
+            ]
+        ]
+    },
+    {
+        "id": "df930baf.bbb468",
+        "type": "debug",
+        "z": "c77ab3af.0f028",
+        "name": "Last point",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 1440,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "78b3735a.16ad1c",
+        "type": "debug",
+        "z": "c77ab3af.0f028",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 1430,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "d27548ea.d851d8",
+        "type": "function",
+        "z": "c77ab3af.0f028",
+        "name": "Last point",
+        "func": "const arr = msg.payload;\nmsg.payload = arr.slice(-1)[0]\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1300,
+        "y": 160,
+        "wires": [
+            [
+                "df930baf.bbb468"
+            ]
+        ]
+    },
+    {
+        "id": "29c6ed06.d740d2",
+        "type": "influxdb in",
+        "z": "c77ab3af.0f028",
+        "influxdb": "ccc0b64f.610828",
+        "name": "'sense_hat' SELECT query I",
+        "query": "SELECT * FROM sense_hat",
+        "rawOutput": false,
+        "precision": "",
+        "retentionPolicy": "",
+        "x": 780,
+        "y": 120,
+        "wires": [
+            [
+                "8548c112.bb79d"
             ]
         ]
     }
