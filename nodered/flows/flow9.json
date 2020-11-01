@@ -1528,81 +1528,13 @@
         ]
     },
     {
-        "id": "97244d9d.2e163",
-        "type": "comment",
-        "z": "c77ab3af.0f028",
-        "name": "InfluxDB READ query inside the node: Option 1",
-        "info": "",
-        "x": 280,
-        "y": 80,
-        "wires": []
-    },
-    {
         "id": "693aa122.50776",
         "type": "comment",
         "z": "c77ab3af.0f028",
-        "name": "InfluxDB READ query created externally: Option 2",
+        "name": "InfluxDB READ query",
         "info": "",
-        "x": 260,
-        "y": 240,
-        "wires": []
-    },
-    {
-        "id": "cf88dbfd.86cff8",
-        "type": "inject",
-        "z": "c77ab3af.0f028",
-        "name": "",
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "x": 580,
-        "y": 420,
-        "wires": [
-            [
-                "30c946d1.d59d7a"
-            ]
-        ]
-    },
-    {
-        "id": "851140d7.d440f",
-        "type": "comment",
-        "z": "c77ab3af.0f028",
-        "name": "InfluxDB WRITE query",
-        "info": "",
-        "x": 360,
-        "y": 420,
-        "wires": []
-    },
-    {
-        "id": "30c946d1.d59d7a",
-        "type": "function",
-        "z": "c77ab3af.0f028",
-        "name": "WRITE data point",
-        "func": "msg.payload = {location:\"HOME\", room: \"KITCHEN\",instant: 33,average: 32.99 }\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 790,
-        "y": 420,
-        "wires": [
-            [
-                "78cf4bc3.7bbfc4"
-            ]
-        ]
-    },
-    {
-        "id": "78cf4bc3.7bbfc4",
-        "type": "influxdb out",
-        "z": "c77ab3af.0f028",
-        "influxdb": "ccc0b64f.610828",
-        "name": "",
-        "measurement": "temperatures",
-        "precision": "",
-        "retentionPolicy": "",
-        "x": 1090,
-        "y": 420,
+        "x": 200,
+        "y": 100,
         "wires": []
     },
     {
@@ -1804,7 +1736,8 @@
         "wires": [
             [
                 "704afeac.619a6",
-                "2683821c.8a590e"
+                "2683821c.8a590e",
+                "7bc2d823.2f27e8"
             ]
         ]
     },
@@ -1813,10 +1746,10 @@
         "type": "function",
         "z": "b4e759db.21b158",
         "name": "dotenv",
-        "func": "const env = global.get('dotenv').config()\nconst process = global.get('process')\nmsg.payload = process.env\nreturn msg;",
+        "func": "// All system enviroment variables\n//const process = global.get('process')\n//msg.payload = process.env\n\n// Only variable un node .env file\nconst env = global.get('dotenv').config()\nconsole.log(env)\nmsg.payload = env.parsed\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 330,
+        "x": 390,
         "y": 100,
         "wires": [
             [
@@ -1828,14 +1761,14 @@
         "id": "509921cd.653ca",
         "type": "debug",
         "z": "b4e759db.21b158",
-        "name": "process.env",
-        "active": false,
+        "name": "ENV vars",
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
         "complete": "payload",
         "targetType": "msg",
-        "x": 490,
+        "x": 540,
         "y": 100,
         "wires": []
     },
@@ -1847,7 +1780,7 @@
         "func": "msg.payload = env.get(\"\")\n\nmsg.payload = {\n    username: env.get(\"USERNAME\"),\n    password: env.get(\"PASSWORD\"),\n    secret:   env.get(\"SECRETKEY\")\n}\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 320,
+        "x": 340,
         "y": 240,
         "wires": [
             [
@@ -1893,7 +1826,7 @@
         "func": "msg.payload = {\n    app_id:  env.get(\"APP_ID\") || 0,\n    key:     env.get(\"APP_KEY\"),\n    secret:  env.get(\"APP_SECRET\"),\n    cluster: env.get(\"APP_CLUSTER\")\n}\n    \nreturn msg;\n\n//$(APP_KEY)\n//$(APP_SECRET)\n//process.env.APP_KEY",
         "outputs": 1,
         "noerr": 0,
-        "x": 310,
+        "x": 350,
         "y": 180,
         "wires": [
             [
@@ -1902,71 +1835,19 @@
         ]
     },
     {
-        "id": "bd3780ea.bd31e",
-        "type": "influxdb in",
-        "z": "c77ab3af.0f028",
-        "influxdb": "ccc0b64f.610828",
-        "name": "'temperatures' SELECT query",
-        "query": "SELECT * FROM temperatures",
-        "rawOutput": false,
-        "precision": "",
-        "retentionPolicy": "",
-        "x": 790,
-        "y": 80,
-        "wires": [
-            [
-                "8548c112.bb79d"
-            ]
-        ]
-    },
-    {
-        "id": "b15f26ac.83ee48",
-        "type": "inject",
-        "z": "c77ab3af.0f028",
-        "name": "",
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "x": 560,
-        "y": 80,
-        "wires": [
-            [
-                "bd3780ea.bd31e",
-                "29c6ed06.d740d2"
-            ]
-        ]
-    },
-    {
-        "id": "8548c112.bb79d",
-        "type": "debug",
-        "z": "c77ab3af.0f028",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "x": 1030,
-        "y": 80,
-        "wires": []
-    },
-    {
         "id": "8cc58772.183038",
         "type": "inject",
         "z": "c77ab3af.0f028",
-        "name": "",
+        "name": "Trigger database",
         "topic": "",
         "payload": "",
         "payloadType": "date",
         "repeat": "",
         "crontab": "",
         "once": false,
-        "x": 560,
-        "y": 240,
+        "onceDelay": "",
+        "x": 440,
+        "y": 100,
         "wires": [
             [
                 "2795485d.088068"
@@ -1981,8 +1862,8 @@
         "func": "//msg.query=\"SELECT * FROM temperatures\";\n//msg.query=\"SELECT last(temperature),time,location,room FROM sense_hat\";\n//msg.query=\"SELECT * FROM sense_hat WHERE time > now() - 1h limit 4\";\n//msg.query=\"SELECT * FROM sense_hat WHERE time > now() - 1m\";\nmsg.query=\"SELECT * FROM sense_hat WHERE time > now() - 60s\";\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 770,
-        "y": 240,
+        "x": 690,
+        "y": 100,
         "wires": [
             [
                 "be7a2b6.2106ed8"
@@ -1999,8 +1880,8 @@
         "rawOutput": false,
         "precision": "",
         "retentionPolicy": "",
-        "x": 1060,
-        "y": 240,
+        "x": 800,
+        "y": 200,
         "wires": [
             [
                 "78b3735a.16ad1c",
@@ -2019,7 +1900,7 @@
         "tostatus": false,
         "complete": "payload",
         "targetType": "msg",
-        "x": 1440,
+        "x": 1200,
         "y": 240,
         "wires": []
     },
@@ -2034,8 +1915,8 @@
         "tostatus": false,
         "complete": "payload",
         "targetType": "msg",
-        "x": 1440,
-        "y": 300,
+        "x": 1040,
+        "y": 180,
         "wires": []
     },
     {
@@ -2046,29 +1927,11 @@
         "func": "const arr = msg.payload;\nmsg.payload = arr.slice(-1)[0]\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 1300,
+        "x": 1040,
         "y": 240,
         "wires": [
             [
                 "df930baf.bbb468"
-            ]
-        ]
-    },
-    {
-        "id": "29c6ed06.d740d2",
-        "type": "influxdb in",
-        "z": "c77ab3af.0f028",
-        "influxdb": "ccc0b64f.610828",
-        "name": "'sense_hat' SELECT query I",
-        "query": "SELECT * FROM sense_hat",
-        "rawOutput": false,
-        "precision": "",
-        "retentionPolicy": "",
-        "x": 780,
-        "y": 120,
-        "wires": [
-            [
-                "8548c112.bb79d"
             ]
         ]
     }
