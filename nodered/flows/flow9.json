@@ -200,126 +200,17 @@
         "id": "bb270b26.18d878",
         "type": "pusher in",
         "z": "f00a487a.95faf8",
-        "name": "",
+        "name": "Pusher",
         "channel": "data_env",
         "cluster": "eu",
         "eventname": "env",
-        "x": 170,
-        "y": 220,
+        "x": 230,
+        "y": 260,
         "wires": [
             [
-                "2bc107be.598d38",
-                "ff6990d1.d87a8",
                 "3c167705.047788"
             ]
         ]
-    },
-    {
-        "id": "fc0d1a5.8b429e8",
-        "type": "debug",
-        "z": "f00a487a.95faf8",
-        "name": "Last 10 samples",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "x": 920,
-        "y": 120,
-        "wires": []
-    },
-    {
-        "id": "2bc107be.598d38",
-        "type": "buffer-array",
-        "z": "f00a487a.95faf8",
-        "name": "",
-        "bufferLen": "10",
-        "startWhenFilled": false,
-        "x": 570,
-        "y": 220,
-        "wires": [
-            [
-                "fc0d1a5.8b429e8",
-                "95bc4888.1dc8d8",
-                "4992488e.00f708"
-            ]
-        ]
-    },
-    {
-        "id": "ff6990d1.d87a8",
-        "type": "interval-length",
-        "z": "f00a487a.95faf8",
-        "format": "mills",
-        "bytopic": false,
-        "minimum": "",
-        "maximum": "",
-        "window": "",
-        "timeout": false,
-        "msgTimeout": "",
-        "minimumunit": "msecs",
-        "maximumunit": "msecs",
-        "windowunit": "msecs",
-        "msgTimeoutUnit": "msecs",
-        "reset": false,
-        "startup": false,
-        "msgField": "payload",
-        "timestampField": "timestamp",
-        "repeatTimeout": false,
-        "name": "",
-        "x": 560,
-        "y": 60,
-        "wires": [
-            [
-                "a0c595ab.fa9128"
-            ],
-            []
-        ]
-    },
-    {
-        "id": "95bc4888.1dc8d8",
-        "type": "debug",
-        "z": "f00a487a.95faf8",
-        "name": "msg.payload[9] -> MOST RECENT",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": true,
-        "complete": "payload[9].temperature",
-        "targetType": "msg",
-        "x": 980,
-        "y": 160,
-        "wires": []
-    },
-    {
-        "id": "4992488e.00f708",
-        "type": "debug",
-        "z": "f00a487a.95faf8",
-        "name": "msg.payload[0] -> OLDEST",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload[0].temperature",
-        "targetType": "msg",
-        "x": 960,
-        "y": 220,
-        "wires": []
-    },
-    {
-        "id": "a0c595ab.fa9128",
-        "type": "debug",
-        "z": "f00a487a.95faf8",
-        "name": "Last INTERVAL",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "x": 920,
-        "y": 60,
-        "wires": []
     },
     {
         "id": "16f621c6.5c6aee",
@@ -329,8 +220,8 @@
         "func": "msg.topic=\"standardDeviation\"\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 370,
-        "y": 620,
+        "x": 430,
+        "y": 500,
         "wires": [
             [
                 "af35f1da.61f24"
@@ -345,8 +236,8 @@
         "func": "msg.topic=\"mean\"\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 450,
-        "y": 560,
+        "x": 530,
+        "y": 440,
         "wires": [
             [
                 "dee2f3d8.d5e29"
@@ -367,8 +258,8 @@
         "parameterFieldType": "msg",
         "stripFunction": false,
         "resultOnly": true,
-        "x": 630,
-        "y": 560,
+        "x": 690,
+        "y": 440,
         "wires": [
             [
                 "616f042b.87437c",
@@ -382,14 +273,14 @@
         "type": "debug",
         "z": "f00a487a.95faf8",
         "name": "AVERAGE temperature (last 10)",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
         "complete": "payload",
         "targetType": "msg",
-        "x": 990,
-        "y": 620,
+        "x": 1050,
+        "y": 500,
         "wires": []
     },
     {
@@ -411,8 +302,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 550,
-        "y": 400,
+        "x": 470,
+        "y": 260,
         "wires": [
             [
                 "da94596a.0d2188",
@@ -428,8 +319,8 @@
         "name": "",
         "bufferLen": "10",
         "startWhenFilled": false,
-        "x": 290,
-        "y": 560,
+        "x": 350,
+        "y": 440,
         "wires": [
             [
                 "12c13b1e.ff04b5",
@@ -443,14 +334,14 @@
         "type": "debug",
         "z": "f00a487a.95faf8",
         "name": "STANDARD DEV temperature (last 10)",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
         "complete": "payload",
         "targetType": "msg",
-        "x": 970,
-        "y": 680,
+        "x": 1030,
+        "y": 560,
         "wires": []
     },
     {
@@ -467,8 +358,8 @@
         "parameterFieldType": "msg",
         "stripFunction": false,
         "resultOnly": true,
-        "x": 610,
-        "y": 620,
+        "x": 670,
+        "y": 500,
         "wires": [
             [
                 "6a02ae7b.f102",
@@ -492,11 +383,11 @@
         "interpolate": "linear",
         "nodata": "No Data",
         "dot": true,
-        "ymin": "0",
-        "ymax": "25",
-        "removeOlder": "60",
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "6",
         "removeOlderPoints": "",
-        "removeOlderUnit": "1",
+        "removeOlderUnit": "3600",
         "cutout": 0,
         "useOneColor": false,
         "colors": [
@@ -512,8 +403,8 @@
         ],
         "useOldStyle": false,
         "outputs": 1,
-        "x": 1190,
-        "y": 440,
+        "x": 1230,
+        "y": 280,
         "wires": [
             []
         ]
@@ -527,7 +418,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 990,
-        "y": 400,
+        "y": 200,
         "wires": [
             [
                 "62adcdca.2488b4"
@@ -543,7 +434,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 990,
-        "y": 440,
+        "y": 260,
         "wires": [
             [
                 "62adcdca.2488b4"
@@ -558,8 +449,8 @@
         "func": "// msg output for graphing standard deviation data\nmsg3 = {payload: msg.payload, topic: 'Standard deviation over last 10 reads'};\nreturn [msg3];",
         "outputs": 1,
         "noerr": 0,
-        "x": 980,
-        "y": 480,
+        "x": 1000,
+        "y": 340,
         "wires": [
             [
                 "62adcdca.2488b4"
@@ -574,8 +465,8 @@
         "links": [
             "6c7005d6.b64d5c"
         ],
-        "x": 1155,
-        "y": 340,
+        "x": 895,
+        "y": 100,
         "wires": []
     },
     {
@@ -632,10 +523,10 @@
         "id": "693aa122.50776",
         "type": "comment",
         "z": "c77ab3af.0f028",
-        "name": "InfluxDB READ query",
+        "name": "InfluxDB READ query: Instant temperature",
         "info": "",
-        "x": 200,
-        "y": 100,
+        "x": 260,
+        "y": 60,
         "wires": []
     },
     {
@@ -644,7 +535,7 @@
         "z": "f8d118e1.ddd038",
         "name": "InfluxDB: Store raw data",
         "info": "",
-        "x": 230,
+        "x": 370,
         "y": 240,
         "wires": []
     },
@@ -676,8 +567,8 @@
         "tostatus": false,
         "complete": "payload",
         "targetType": "msg",
-        "x": 600,
-        "y": 500,
+        "x": 560,
+        "y": 400,
         "wires": []
     },
     {
@@ -746,8 +637,8 @@
         "links": [
             "a10d3ee8.de1d1"
         ],
-        "x": 1155,
-        "y": 560,
+        "x": 1215,
+        "y": 440,
         "wires": []
     },
     {
@@ -775,7 +666,7 @@
         "z": "f8d118e1.ddd038",
         "name": "InfluxDB: Store averaged data",
         "info": "",
-        "x": 220,
+        "x": 360,
         "y": 460,
         "wires": []
     },
@@ -969,14 +860,14 @@
         "id": "df930baf.bbb468",
         "type": "debug",
         "z": "c77ab3af.0f028",
-        "name": "Last point",
+        "name": "Last point INSTANT",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
         "complete": "payload",
         "targetType": "msg",
-        "x": 1200,
+        "x": 1230,
         "y": 240,
         "wires": []
     },
@@ -1008,6 +899,117 @@
         "wires": [
             [
                 "df930baf.bbb468"
+            ]
+        ]
+    },
+    {
+        "id": "aa352705.537c08",
+        "type": "comment",
+        "z": "c77ab3af.0f028",
+        "name": "InfluxDB READ query: Averaged temperature",
+        "info": "",
+        "x": 270,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "ca04a6aa.ba7bc8",
+        "type": "inject",
+        "z": "c77ab3af.0f028",
+        "name": "Trigger database",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "10",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "",
+        "x": 470,
+        "y": 320,
+        "wires": [
+            [
+                "1e3edcfd.009c13"
+            ]
+        ]
+    },
+    {
+        "id": "1e3edcfd.009c13",
+        "type": "function",
+        "z": "c77ab3af.0f028",
+        "name": "SELECT points in the last 60s",
+        "func": "msg.query=\"SELECT * FROM sense_hat_avg WHERE time > now() - 60s\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 710,
+        "y": 320,
+        "wires": [
+            [
+                "1f10f597.36baba"
+            ]
+        ]
+    },
+    {
+        "id": "1f10f597.36baba",
+        "type": "influxdb in",
+        "z": "c77ab3af.0f028",
+        "influxdb": "ccc0b64f.610828",
+        "name": "'sense_hat' SELECT query II",
+        "query": "",
+        "rawOutput": false,
+        "precision": "",
+        "retentionPolicy": "",
+        "x": 820,
+        "y": 420,
+        "wires": [
+            [
+                "6e9923ae.2d7dbc",
+                "a90944c2.05fc58"
+            ]
+        ]
+    },
+    {
+        "id": "a747814d.2c09e",
+        "type": "debug",
+        "z": "c77ab3af.0f028",
+        "name": "Last point AVERAGED",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 1260,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "6e9923ae.2d7dbc",
+        "type": "debug",
+        "z": "c77ab3af.0f028",
+        "name": "All points",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 1060,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "a90944c2.05fc58",
+        "type": "function",
+        "z": "c77ab3af.0f028",
+        "name": "Last point",
+        "func": "const arr = msg.payload;\nmsg.payload = arr.slice(-1)[0]\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1060,
+        "y": 460,
+        "wires": [
+            [
+                "a747814d.2c09e"
             ]
         ]
     }
