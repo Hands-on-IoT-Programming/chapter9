@@ -266,8 +266,7 @@
                 "98eaba5e.148b28",
                 "feb8749b.80c978",
                 "bbf2917c.a79ff",
-                "c2c0bf2b.00e5a",
-                "52da14c9.8fba5c"
+                "c2c0bf2b.00e5a"
             ]
         ]
     },
@@ -1545,7 +1544,7 @@
         "name": "InfluxDB READ query created externally: Option 2",
         "info": "",
         "x": 260,
-        "y": 160,
+        "y": 240,
         "wires": []
     },
     {
@@ -1560,7 +1559,7 @@
         "crontab": "",
         "once": false,
         "x": 580,
-        "y": 340,
+        "y": 420,
         "wires": [
             [
                 "30c946d1.d59d7a"
@@ -1574,7 +1573,7 @@
         "name": "InfluxDB WRITE query",
         "info": "",
         "x": 360,
-        "y": 340,
+        "y": 420,
         "wires": []
     },
     {
@@ -1586,7 +1585,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 790,
-        "y": 340,
+        "y": 420,
         "wires": [
             [
                 "78cf4bc3.7bbfc4"
@@ -1603,7 +1602,7 @@
         "precision": "",
         "retentionPolicy": "",
         "x": 1090,
-        "y": 340,
+        "y": 420,
         "wires": []
     },
     {
@@ -1967,7 +1966,7 @@
         "crontab": "",
         "once": false,
         "x": 560,
-        "y": 160,
+        "y": 240,
         "wires": [
             [
                 "2795485d.088068"
@@ -1983,7 +1982,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 770,
-        "y": 160,
+        "y": 240,
         "wires": [
             [
                 "be7a2b6.2106ed8"
@@ -2001,7 +2000,7 @@
         "precision": "",
         "retentionPolicy": "",
         "x": 1060,
-        "y": 160,
+        "y": 240,
         "wires": [
             [
                 "78b3735a.16ad1c",
@@ -2021,22 +2020,22 @@
         "complete": "payload",
         "targetType": "msg",
         "x": 1440,
-        "y": 160,
+        "y": 240,
         "wires": []
     },
     {
         "id": "78b3735a.16ad1c",
         "type": "debug",
         "z": "c77ab3af.0f028",
-        "name": "",
+        "name": "All points",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
         "complete": "payload",
         "targetType": "msg",
-        "x": 1430,
-        "y": 220,
+        "x": 1440,
+        "y": 300,
         "wires": []
     },
     {
@@ -2048,7 +2047,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 1300,
-        "y": 160,
+        "y": 240,
         "wires": [
             [
                 "df930baf.bbb468"
