@@ -266,7 +266,8 @@
                 "98eaba5e.148b28",
                 "feb8749b.80c978",
                 "bbf2917c.a79ff",
-                "c2c0bf2b.00e5a"
+                "c2c0bf2b.00e5a",
+                "52da14c9.8fba5c"
             ]
         ]
     },
@@ -1731,7 +1732,7 @@
         "crontab": "",
         "once": true,
         "onceDelay": "0",
-        "x": 130,
+        "x": 530,
         "y": 100,
         "wires": [
             [
@@ -1749,7 +1750,7 @@
         "func": "// All system enviroment variables\n//const process = global.get('process')\n//msg.payload = process.env\n\n// Only variable un node .env file\nconst env = global.get('dotenv').config()\nconsole.log(env)\nmsg.payload = env.parsed\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 390,
+        "x": 790,
         "y": 100,
         "wires": [
             [
@@ -1768,7 +1769,7 @@
         "tostatus": false,
         "complete": "payload",
         "targetType": "msg",
-        "x": 540,
+        "x": 940,
         "y": 100,
         "wires": []
     },
@@ -1780,7 +1781,7 @@
         "func": "msg.payload = env.get(\"\")\n\nmsg.payload = {\n    username: env.get(\"USERNAME\"),\n    password: env.get(\"PASSWORD\"),\n    secret:   env.get(\"SECRETKEY\")\n}\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 340,
+        "x": 740,
         "y": 240,
         "wires": [
             [
@@ -1799,7 +1800,7 @@
         "tostatus": false,
         "complete": "payload",
         "targetType": "msg",
-        "x": 540,
+        "x": 940,
         "y": 240,
         "wires": []
     },
@@ -1814,7 +1815,7 @@
         "tostatus": false,
         "complete": "payload",
         "targetType": "msg",
-        "x": 540,
+        "x": 940,
         "y": 180,
         "wires": []
     },
@@ -1826,7 +1827,7 @@
         "func": "msg.payload = {\n    app_id:  env.get(\"APP_ID\") || 0,\n    key:     env.get(\"APP_KEY\"),\n    secret:  env.get(\"APP_SECRET\"),\n    cluster: env.get(\"APP_CLUSTER\")\n}\n    \nreturn msg;\n\n//$(APP_KEY)\n//$(APP_SECRET)\n//process.env.APP_KEY",
         "outputs": 1,
         "noerr": 0,
-        "x": 350,
+        "x": 750,
         "y": 180,
         "wires": [
             [
