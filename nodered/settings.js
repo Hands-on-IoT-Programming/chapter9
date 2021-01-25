@@ -32,6 +32,7 @@ module.exports = {
     // node-red from being able to decrypt your existing credentials and they will be
     // lost.
     credentialSecret: process.env.SECRETKEY,
+    //credentialSecret: "raspberry",
 
     // If not specified, data will be put in '$HOME/.node-red'
     userDir: `${process.cwd()}/flows`,
@@ -81,10 +82,15 @@ module.exports = {
     // The following sample has correponds to password 'raspberry'
     adminAuth: {
         type: "credentials",
+        /*users: [{
+            username: "admin",
+            password: '$2b$08$a3BqIzZBlX1ZZGymCPCeV.JNy0nEmyOIRdiN.hDjxXaHMzPk1Z/uO',
+            permissions: "*"
+        }],*/
         users: [{
             username: process.env.USERNAME,
             password: process.env.PASSWORD,
-           permissions: "*"
+            permissions: "*"
         }],
     //  Only allow read access without authentication
         default: {
